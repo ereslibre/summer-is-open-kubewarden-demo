@@ -1,0 +1,21 @@
+---
+apiVersion: policies.kubewarden.io/v1alpha2
+kind: ClusterAdmissionPolicy
+metadata:
+  name: safe-annotations-lets-encrypt-production
+spec:
+  module: registry://registry.ereslibre.net/kubewarden/safe-annotations-policy:v0.0.1
+  settings:
+    constrained_annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+  rules:
+    - apiGroups:
+        - "*"
+      apiVersions:
+        - "*"
+      resources:
+        - "*"
+      operations:
+        - CREATE
+        - UPDATE
+  mutating: false

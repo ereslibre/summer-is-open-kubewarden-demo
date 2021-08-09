@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    ingress.kubernetes.io/secure-backends: "true"
+    meta.helm.sh/release-name: longhorn
+    meta.helm.sh/release-namespace: longhorn-test
+  creationTimestamp: "2021-06-21T20:27:29Z"
+  generation: 1
+  labels:
+    app: longhorn-ingress
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.1.2
+    helm.sh/chart: longhorn-1.1.2
+    helm.toolkit.fluxcd.io/name: longhorn
+    helm.toolkit.fluxcd.io/namespace: longhorn-test
+  name: longhorn-ingress-production
+  namespace: longhorn-test
+  resourceVersion: "21219514"
+  selfLink: /apis/extensions/v1beta1/namespaces/longhorn-test/ingresses/longhorn-ingress
+  uid: 67dcf6bd-7324-4efb-8551-3f2f1382ddda
+spec:
+  rules:
+  - host: longhorn.ereslibre.net
+    http:
+      paths:
+      - backend:
+          serviceName: longhorn-frontend
+          servicePort: 80
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - longhorn.ereslibre.net
+    secretName: longhorn-ereslibre-net-cert
