@@ -12,7 +12,7 @@ func main() {
      d := demo.New()
 
      d.Add(runPolicyWithKwctl(), "run-policy-with-kwctl", "Runs a given policy with kwctl")
-     d.Add(runPolicyOnKubernetes(), "run-policy-on-kubernetes", "Runs a given policy on top of Kubernets")
+     d.Add(runPolicyOnKubernetes(), "run-policy-on-kubernetes", "Runs a given policy on top of Kubernetes")
 
      d.Run()
 }
